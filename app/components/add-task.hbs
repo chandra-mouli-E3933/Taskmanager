@@ -1,0 +1,21 @@
+<Input @value={{this.message}}/>
+<button {{on "click" (fn this.addMessage this.id this.message)}}>{{yield}}</button>
+{{#if this.addInput}}
+    <h2>No Tasks</h2>
+{{else}}
+    {{#each this.messages as |message index|}}
+       <div>
+            <br />
+            {{#if this.routeName}}
+                <LinkTo @route='task' @model={{message}}>{{message.name}}</LinkTo>
+            {{else}}
+                <LinkTo @route='subtask' @models={{array @task.id message.id}}>{{message.name}}</LinkTo>
+            {{/if}}
+            <button>edit</button>
+            <button>delete</button>
+            
+        </div>
+    {{/each}}
+{{/if}}
+
+
