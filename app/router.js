@@ -7,7 +7,6 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('task', {path: '/tasks/:task_id'});
-  this.route('index', {path: '/tasks'}); // Home Page
-  this.route('subtask', {path: '/tasks/:task_id/subtasks/:subtask_id'});
+  this.route('tasks')
+  this.route('task', {path: '/tasks/:task_id'})
 });
