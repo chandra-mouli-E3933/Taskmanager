@@ -1,2 +1,7 @@
-<LinkTo @route='index'>Back to all Tasks</LinkTo>
-<h3>Subtask</h3>
+<h2>Update Tasks</h2>
+<LinkTo @route="subtasks" @model={{@model.id}}>Back</LinkTo>
+<br />
+<br />
+<Input @value={{this.message}} ></Input>
+
+<button {{on "click" (fn this.updateMessage this.message)}}>Update</button>

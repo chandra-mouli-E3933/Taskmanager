@@ -1,0 +1,16 @@
+<LinkTo @route='tasks'>Back to all Tasks</LinkTo>
+<h3>Subtask for {{@model.name}}</h3>
+
+<AddTask @id = {{@model.id}}>Add Subtask</AddTask>
+
+{{#if  @model.subtasks}}
+    {{#each @model.subtasks as |task|}}
+    <p>
+        <LinkTo @route="subtask"  @models={{array model.id task.id}}>{{task.name}}</LinkTo>
+        <LinkTo @route="subtask"  @models={{array model.id task.id}}><button>edit</button></LinkTo>
+        <button {{on "click" (fn this.deleteMessage task.id) }}>delete</button>
+    </p>
+    {{/each}}
+{{else}}
+    <h2>No Tasks</h2>
+{{/if}}

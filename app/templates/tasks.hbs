@@ -1,10 +1,13 @@
 <AddTask> Add Task </AddTask>
-{{#each @model as |task|}}
-    <p>
-        {{task.name}} 
-        <LinkTo @route='task' @model={{task}}><button>edit</button></LinkTo>
-        <button {{on "click" (fn this.deleteMessage task.id) }}>Delete</button>
-    </p>
-{{/each}}
-{{outlet}}
+{{#if @model}}
+    {{#each @model as |task|}}
+        <p>
+            <LinkTo @route='subtasks' @model={{task.id}}>{{task.name}} </LinkTo> 
+            <LinkTo @route='task' @model={{task}}><button>edit</button></LinkTo>
+            <button {{on "click" (fn this.deleteMessage task.id) }}>Delete</button>
+        </p>
+    {{/each}}
+{{else}}
+    <h2>No Tasks</h2>
+{{/if}}
 

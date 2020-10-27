@@ -2,7 +2,7 @@ import { Factory } from 'ember-cli-mirage';
 // import faker from 'faker';
 
 export default Factory.extend({
-    // name() {
-    //     return "name1"
-    // }
+    name(i) {
+        return `Task ${i}`;
+    }
 });

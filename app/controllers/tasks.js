@@ -5,24 +5,9 @@ export default class TasksController extends Controller {
     @service store;
 
     @action
-    deleteMessage(id){
-        // let deletedTask = this.store.peekRecord('task', id);
-        // if(deletedTask){
-        //     deletedTask.destroyRecord();
-        // }
-
-
-        // this.store.findRecord('task',id, { reload: true }).then(record => {
-        //      record.destroyRecord();
-        //   });
-
-        var record = this.store.peekRecord('task', 1);
-        if (record !== null){
-          record.destroyRecord();
-        } else {
-          this.store.findRecord('task', 1).then(function(record){
-            record.destroyRecord();
-          })
-        }
+    deleteMessage(id){  
+      let task = this.store.peekRecord('task', id);
+      console.log(task)
+      task.destroyRecord();
     }
 }

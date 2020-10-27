@@ -1,7 +1,4 @@
 <Input @value={{this.message}}/>
 <button {{on "click" (fn this.addMessage this.message)}}>{{yield}}</button>
-{{#if this.addInput}}
-    <h2>No Tasks</h2>
-{{/if}}
 
 

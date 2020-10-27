@@ -1,4 +1,7 @@
 <h2>Update Tasks</h2>
+<LinkTo @route='tasks'>Back to all Tasks</LinkTo>
+<br />
+<br />
 <Input @value={{this.message}}></Input>
 
 <button {{on "click" (fn this.updateMessage this.message)}}>Update</button>

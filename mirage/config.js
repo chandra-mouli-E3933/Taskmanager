@@ -1,21 +1,40 @@
 export default function() {
 
-  this.get('/tasks', () => {
-    console.log('called')
-    return {
-      data: [
-        { id: 1, type: 'tasks', attributes: { name: 'Task1' } },
-        { id: 2, type: 'tasks', attributes: { name: 'Task2' } },
-        { id: 3, type: 'tasks', attributes: { name: 'Task3' } },
-      ]
-    };
-  });
+  // this.get('/tasks', () => {
+  //   console.log('called')
+  //   return {
+  //     data: [
+  //       { id: 1, type: 'tasks', attributes: { name: 'Task1' },  
+  //       relationships: {
+  //         subtasks: {
+  //           data: [
+  //             { id: 1, type: 'subtasks'},
+  //             { id: 2, type: 'subtasks'}
+  //           ]
+  //       } } },
+  //       { id: 2, type: 'tasks', attributes: { name: 'Task2' } },
+  //       { id: 3, type: 'tasks', attributes: { name: 'Task3' } },
+  //     ],
+  //     included:[
+  //       {id: 1, type: "subtasks", attributes: {name: "subtask1"}},
+  //       {id: 2, type: "subtasks", attributes: {name: "subtask2"}}
+  //     ]
+  //   };
+  // });
+
+  this.get('/tasks')
 
   this.post('/tasks');  //creating 
  
   this.patch('/tasks/:task_id');
 
-  this.del('/tasks/:task_id');
+  this.del('/tasks/:task_id'); //not working
+
+  this.post('/subtasks');
+
+  this.patch('/subtasks/:subtask_id');
+
+  this.del('/subtasks/:subtask_id');//not working
 
   // this.del('/tasks/:task_id', (schema, request) => {
   //   let id = request.params.id;
