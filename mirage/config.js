@@ -19,11 +19,24 @@ export default function() {
      return schema.tasks.find(id).destroy();
   });
 
-  this.post('/subtasks');
+  this.get('/tasks/:task_id/subtasks');
 
-  this.patch('/subtasks/:subtask_id');
+  this.post('/subtasks', (schema, request) => {
+      let subtask = JSON.parse(request.requestBody);
+      return schema.create("subtask", subtask);
+  });
 
-  this.delete('/subtasks/:subtask_id');//not working
+  this.put('/subtasks/:subtask_id', (schema, request) => {
+    const subtask = schema.subtasks.find(request.params.subtask_id);
+    const data = JSON.parse(request.requestBody);
+    subtask.update({name: data.subtask.name});
+    return new Response(204, {}, {});
+  });
+
+  this.del('/subtasks/:subtask_id', (schema, request) => {
+    let id = request.params.subtask_id;
+    return schema.subtasks.find(id).destroy();
+ });
 
   
   // These comments are here to help you get started. Feel free to delete them.
