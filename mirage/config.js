@@ -1,46 +1,31 @@
 export default function() {
 
-  // this.get('/tasks', () => {
-  //   console.log('called')
-  //   return {
-  //     data: [
-  //       { id: 1, type: 'tasks', attributes: { name: 'Task1' },  
-  //       relationships: {
-  //         subtasks: {
-  //           data: [
-  //             { id: 1, type: 'subtasks'},
-  //             { id: 2, type: 'subtasks'}
-  //           ]
-  //       } } },
-  //       { id: 2, type: 'tasks', attributes: { name: 'Task2' } },
-  //       { id: 3, type: 'tasks', attributes: { name: 'Task3' } },
-  //     ],
-  //     included:[
-  //       {id: 1, type: "subtasks", attributes: {name: "subtask1"}},
-  //       {id: 2, type: "subtasks", attributes: {name: "subtask2"}}
-  //     ]
-  //   };
-  // });
-
   this.get('/tasks')
 
-  this.post('/tasks');  //creating 
+  this.post('/tasks', (schema, request) => {
+    let task = JSON.parse(request.requestBody);
+    return schema.create("task", task);
+  });  //creating 
  
-  this.patch('/tasks/:task_id');
+  this.put('/tasks/:task_id', async(schema, request) => {
+    const task = schema.tasks.find(request.params.task_id);
+    const data = JSON.parse(request.requestBody);
+    task.update({name: data.task.name});
+    return new Response(204, {}, {});
+  });
 
-  this.del('/tasks/:task_id'); //not working
+  this.del('/tasks/:task_id', (schema, request) => {
+     let id = request.params.task_id;
+     return schema.tasks.find(id).destroy();
+  });
 
   this.post('/subtasks');
 
   this.patch('/subtasks/:subtask_id');
 
-  this.del('/subtasks/:subtask_id');//not working
+  this.delete('/subtasks/:subtask_id');//not working
 
-  // this.del('/tasks/:task_id', (schema, request) => {
-  //   let id = request.params.id;
   
-  //   schema.tasks.find(id).destroy();
-  // });
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

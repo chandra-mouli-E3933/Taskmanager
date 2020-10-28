@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default class TasksRoute extends Route {
     @service store;
     async model() {
-        return this.store.findAll('task')
+        return this.store.findAll('task');
     }
+
 }

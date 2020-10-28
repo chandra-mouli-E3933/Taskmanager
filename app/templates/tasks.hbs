@@ -4,7 +4,7 @@
         <p>
             <LinkTo @route='subtasks' @model={{task.id}}>{{task.name}} </LinkTo> 
             <LinkTo @route='task' @model={{task}}><button>edit</button></LinkTo>
-            <button {{on "click" (fn this.deleteMessage task.id) }}>Delete</button>
+            <button {{on "click" (fn this.deleteMessage task) }}>Delete</button>
         </p>
     {{/each}}
 {{else}}

@@ -5,9 +5,7 @@ export default class TasksController extends Controller {
     @service store;
 
     @action
-    deleteMessage(id){  
-      let task = this.store.peekRecord('task', id);
-      console.log(task)
+    deleteMessage(task){  
       task.destroyRecord();
     }
 }

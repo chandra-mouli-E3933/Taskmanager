@@ -7,6 +7,7 @@ export default class SubtaskController extends Controller {
     @service store;
     @tracked message = '';
     
+
     @action
     updateMessage(message){
         this.message = '';

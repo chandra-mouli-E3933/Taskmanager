@@ -8,7 +8,7 @@
     <p>
         <LinkTo @route="subtask"  @models={{array model.id task.id}}>{{task.name}}</LinkTo>
         <LinkTo @route="subtask"  @models={{array model.id task.id}}><button>edit</button></LinkTo>
-        <button {{on "click" (fn this.deleteMessage task.id) }}>delete</button>
+        <button {{on "click" (fn this.deleteMessage task) }}>delete</button>
     </p>
     {{/each}}
 {{else}}
