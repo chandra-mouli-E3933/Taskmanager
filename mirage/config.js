@@ -10,6 +10,7 @@ export default function() {
   this.put('/tasks/:task_id', async(schema, request) => {
     const task = schema.tasks.find(request.params.task_id);
     const data = JSON.parse(request.requestBody);
+    debugger
     task.update({name: data.task.name});
     return new Response(204, {}, {});
   });
@@ -21,19 +22,19 @@ export default function() {
 
   this.get('/tasks/:task_id/subtasks');
 
-  this.post('/subtasks', (schema, request) => {
+  this.post('/tasks/:task_id/subtasks', (schema, request) => {
       let subtask = JSON.parse(request.requestBody);
       return schema.create("subtask", subtask);
   });
 
-  this.put('/subtasks/:subtask_id', (schema, request) => {
+  this.put('/tasks/:task_id/subtasks/:subtask_id', (schema, request) => {
     const subtask = schema.subtasks.find(request.params.subtask_id);
     const data = JSON.parse(request.requestBody);
     subtask.update({name: data.subtask.name});
     return new Response(204, {}, {});
   });
 
-  this.del('/subtasks/:subtask_id', (schema, request) => {
+  this.del('/tasks/:task_id/subtasks/:subtask_id', (schema, request) => {
     let id = request.params.subtask_id;
     return schema.subtasks.find(id).destroy();
  });

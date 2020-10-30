@@ -7,11 +7,9 @@ export default class TaskController extends Controller {
     @service store;
   
     @action 
-    updateMessage(message){
-      this.store.findRecord('task', this.model.id).then(function(task) {
-        task.name = message;
-        task.save();
-      });
+    updateMessage(message,task){
+      task.name = message;
+      task.save();
     }
     
 }

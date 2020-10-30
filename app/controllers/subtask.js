@@ -11,10 +11,12 @@ export default class SubtaskController extends Controller {
     @action
     updateMessage(message){
         this.message = '';
-        this.store.findRecord('subtask', this.model.subtask_id).then(function(subtask) {
-            subtask.name = message
-            subtask.save(); 
-          });
+        var subtask = this.store.peekRecord('subtask', this.model.subtask_id);
+        // debugger
+        // this.store.findRecord('subtask', this.model.subtask_id).then(function(subtask) {
+        subtask.name = message;
+        subtask.save(); 
+        //   });
     }    
 
 }

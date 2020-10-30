@@ -3,9 +3,11 @@ import { inject as service } from '@ember/service';
 export default class SubtasksRoute extends Route {
     @service store;
     async model(params) {
-        return this.store.findRecord('task', params.task_id, {
-            include: 'subtasks'
-          });
+        // return this.store.findRecord('task', params.task_id, {
+        //     embedded: 'subtasks'
+        // });
+        return this.store.findRecord('task', params.task_id,  {
+            adapterOptions: { include: 'subtask' }
+        });
     }
 }
-
