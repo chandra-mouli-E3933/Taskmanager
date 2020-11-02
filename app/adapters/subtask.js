@@ -2,7 +2,7 @@ import ApplicationAdapter from './application';
 
 export default class SubtaskAdapter extends ApplicationAdapter {
     urlForCreateRecord(modelName, snapshot){
-        let taskId = snapshot.belongsTo('task').id
+        let taskId = snapshot.belongsTo('task').id;
         return `/tasks/${taskId}/subtasks`
     }
 
@@ -14,5 +14,9 @@ export default class SubtaskAdapter extends ApplicationAdapter {
     urlForDeleteRecord(id, modelName, snapshot) {
         let taskId = snapshot.belongsTo('task').id;
         return `/tasks/${taskId}/subtasks/${id}`
+    }
+    urlForFindAll(modelName, snapshot) {
+        let taskId = snapshot.adapterOptions.id;
+        return `/tasks/${taskId}/subtasks`
     }
 }

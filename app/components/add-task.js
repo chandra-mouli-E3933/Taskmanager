@@ -18,11 +18,11 @@ export default class AddTaskComponent extends Component {
         }
         if(this.router.currentRouteName === 'subtasks'){
             let task = this.store.peekRecord('task', this.args.id);
-            let subtask = this.store.createRecord('subtask', {
+            let subtask = this.store.createRecord('subtask',{
                 name: msg,
                 task: task
               });
-            subtask.save()
+            subtask.save();
         }
           
     }

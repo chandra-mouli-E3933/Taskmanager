@@ -6,17 +6,13 @@ export default class SubtaskController extends Controller {
 
     @service store;
     @tracked message = '';
-    
 
     @action
     updateMessage(message){
         this.message = '';
         var subtask = this.store.peekRecord('subtask', this.model.subtask_id);
-        // debugger
-        // this.store.findRecord('subtask', this.model.subtask_id).then(function(subtask) {
         subtask.name = message;
         subtask.save(); 
-        //   });
     }    
 
 }

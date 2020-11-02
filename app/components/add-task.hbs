@@ -1,4 +1,4 @@
-<Input @value={{this.message}}/>
-<button {{on "click" (fn this.addMessage this.message)}}>{{yield}}</button>
+<Input @value={{this.message}} class='add-input'/>
+<button {{on "click" (fn this.addMessage this.message)}} class='add-input-button'>{{yield}}</button>
 
 
