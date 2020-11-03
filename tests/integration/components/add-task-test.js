@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, fillIn, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | add-task', function(hooks) {
@@ -16,11 +16,17 @@ module('Integration | Component | add-task', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      <AddTask>
-        template block text
-      </AddTask>
+      <AddTask>Add Task</AddTask>
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'Add Task', 'Yielding works fine');
+
+
+    await render(hbs`
+      <AddTask></AddTask>
+    `);
+    await fillIn('input.add-input', 'newtask');
+    await click('button.add-input-button');
+
   });
 });
