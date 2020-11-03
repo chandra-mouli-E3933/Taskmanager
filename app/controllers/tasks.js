@@ -6,6 +6,10 @@ export default class TasksController extends Controller {
 
     @action
     deleteMessage(task){  
-      task.destroyRecord();
+      task.destroyRecord().then(()=> {
+      console.log('Deleted Task sucessfull');
+      }).catch(()=>{
+          console.log('Error occured while Deleting Task')
+      })
     }
 }

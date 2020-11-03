@@ -3,8 +3,8 @@ export default function() {
   this.get('/tasks')
 
   this.post('/tasks', (schema, request) => {
-    let task = JSON.parse(request.requestBody);
-    return schema.create("task", task);
+    let {task} = JSON.parse(request.requestBody);
+    return schema.create("task", {name: task.name});
   });  //creating 
  
   this.put('/tasks/:task_id', async(schema, request) => {

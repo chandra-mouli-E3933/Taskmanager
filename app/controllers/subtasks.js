@@ -5,6 +5,10 @@ export default class SubtasksController extends Controller {
 
     @action
     deleteMessage(record){
-          record.destroyRecord();
+          record.destroyRecord().then(()=> {
+            console.log('Deleted SubTask sucessfull');
+            }).catch(()=>{
+                console.log('Error occured while Deleting SubTask')
+            })
     }
 }

@@ -14,7 +14,13 @@ export default class AddTaskComponent extends Component {
             var task = this.store.createRecord('task', {
                 name: msg
             });
-            task.save()
+            
+            task.save().then(() => {
+                console.log('Add Task sucessfull');
+
+            }).catch(()=>{
+                console.log('Error occured while creating task')
+            })
         }
         if(this.router.currentRouteName === 'subtasks'){
             let task = this.store.peekRecord('task', this.args.id);
@@ -22,7 +28,12 @@ export default class AddTaskComponent extends Component {
                 name: msg,
                 task: task
               });
-            subtask.save();
+            subtask.save().then(() => {
+                console.log('Add SubTask sucessfull');
+
+            }).catch(()=>{
+                console.log('Error occured while creating Subtask')
+            })
         }
           
     }
