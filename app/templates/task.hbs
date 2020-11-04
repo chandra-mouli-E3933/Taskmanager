@@ -2,6 +2,6 @@
 <LinkTo @route='tasks'  class="task-update-back-button">Back to all Tasks </LinkTo>
 <br />
 <br />
-<Input @value={{@model.name}} class="task-update"></Input>
+<Input @value={{@model.name}} class="task-update" />
 
-<button {{on "click" (fn this.updateMessage @model.name model)}} class="task-update-button">Update</button>
+<button type="button" {{on "click" (fn this.updateMessage @model.name @model)}} class="task-update-button">Update</button>

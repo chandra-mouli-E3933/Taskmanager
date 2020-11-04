@@ -1,7 +1,7 @@
 <h2>Update Tasks</h2>
-<LinkTo @route="subtasks" @model={{@model.id}} class="subtask-update-back-button">Back</LinkTo>
+<LinkTo @route="subtasks" @model={{@model.taskId}} class="subtask-update-back-button">Back</LinkTo>
 <br />
 <br />
-<Input @value={{@model.subtask.name}} class="subtask-update" ></Input>
+<Input @value={{@model.name}} class="subtask-update" />
 
-<button {{on "click" (fn this.updateMessage @model.subtask.name)}}  class="subtask-update-button">Update</button>
+<button type="button" {{on "click" (fn this.updateMessage @model.name @model)}}  class="subtask-update-button">Update</button>
