@@ -1,5 +1,5 @@
-<form {{action 'addMessage' @task.name on='submit'}} >
-<Input @value={{@task.name}} class='add-input'/>
+<form {{action 'addMessage' on='submit'}} >
+<Input @value={{this.newtask.name}} class='add-input'/>
 <button type="submit" class='add-input-button'>{{yield}}</button>
 </form>
 

@@ -6,7 +6,6 @@ export default class SubtasksRoute extends Route {
     model(params) { 
         return  RSVP.hash({
           task: this.store.peekRecord('task', params.task_id),
-          subtask: this.store.createRecord('subtask', {}),
           subtasks: this.store.findAll('subtask', {adapterOptions: {id: params.task_id}}).catch(()=>{
                 console.log('Error occured while fetching subtasks')
             })

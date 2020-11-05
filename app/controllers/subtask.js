@@ -3,8 +3,7 @@ import {action} from '@ember/object';
 export default class SubtaskController extends Controller {
 
     @action
-    updateMessage(message,subtask){
-        subtask.name = message;
+    updateMessage(subtask){
         subtask.save().then(() => {
             this.transitionToRoute(`/tasks/${this.model.id}/subtasks`)
         }).catch(() => {

@@ -6,8 +6,7 @@ export default class TasksRoute extends Route {
         return RSVP.hash({
             tasks: this.store.findAll('task').catch(()=>{
                     console.log('Error occured while Fetching Tasks')
-            }),
-            task: this.store.createRecord('task', {})
+            })
         })
     }
 }

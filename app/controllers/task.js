@@ -3,8 +3,7 @@ import {action} from '@ember/object';
 export default class TaskController extends Controller {
   
     @action 
-    updateMessage(message,task){
-      task.name = message;
+    updateMessage(task){
       task.save().then(() => {
         this.transitionToRoute('tasks');
       }).catch(() => {
