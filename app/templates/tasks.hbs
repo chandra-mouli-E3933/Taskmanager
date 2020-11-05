@@ -1,0 +1,15 @@
+<AddTask> Add Task </AddTask>
+{{#if @model.tasks}}
+    {{#each @model.tasks as |task|}}
+        {{#unless task.isNew}}
+        <p>
+            <LinkTo @route='subtasks' @model={{task.id}} class='taskItem'>{{task.name}} </LinkTo> 
+            <LinkTo @route='task' @model={{task}}><button type="button"class="task-edit">edit</button></LinkTo>
+            <button type="button" {{on "click" (fn this.deleteMessage task) }} class="task-delete">Delete</button>
+        </p>
+        {{/unless}}
+    {{/each}}
+{{else}}
+    <h2>No Tasks</h2>
+{{/if}}
+
